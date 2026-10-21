@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- viewport-fit + no zoom so the iPad shows the game full screen -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>Magic Animals &amp; Friends</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- The stage is the 16:9 game area. Everything sits inside it. -->
+  <div id="stage">
+    <!-- The whole game world is drawn on this one canvas -->
+    <canvas id="game"></canvas>
+
+    <!-- Title screen (hidden when you press Play) -->
+    <div id="title">
+      <div class="card">
+        <h1>Magic Animals &amp; Friends</h1>
+        <img class="waving" src="assets/dahlia.svg" alt="Dahlia waving hello">
+        <button id="play">Play</button>
+        <p class="howto" id="howto"></p>
+        <p class="credit">Game designed by Dahlia</p>
+      </div>
+    </div>
+
+    <!-- Touch buttons (only shown on iPads and phones) -->
+    <div id="touch" hidden>
+      <div class="dpad">
+        <button class="arrow up"    data-key="ArrowUp"    aria-label="Up"><img src="assets/icon-arrow.svg" alt=""></button>
+        <button class="arrow left"  data-key="ArrowLeft"  aria-label="Left"><img src="assets/icon-arrow.svg" alt=""></button>
+        <button class="arrow right" data-key="ArrowRight" aria-label="Right"><img src="assets/icon-arrow.svg" alt=""></button>
+        <button class="arrow down"  data-key="ArrowDown"  aria-label="Down"><img src="assets/icon-arrow.svg" alt=""></button>
+      </div>
+      <button class="sparkle" data-key=" " aria-label="Magic"><img src="assets/icon-sparkle.svg" alt=""></button>
+    </div>
+  </div>
+
+  <!-- Order matters: sounds and data first, then the game that uses them -->
+  <script src="sounds.js"></script>
+  <script src="music.js"></script>
+  <script src="data/scenes.js"></script>
+  <script src="data/animals.js"></script>
+  <script src="data/levels.js"></script>
+  <script src="challenges.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

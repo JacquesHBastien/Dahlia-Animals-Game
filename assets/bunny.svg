@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240" width="200" height="240">
+  <title>Bunny</title>
+  <g stroke="#3A2626" stroke-width="3" stroke-linejoin="round">
+    <ellipse cx="78" cy="56" rx="16" ry="50" fill="#F4F0EC" transform="rotate(-10 78 56)"/>
+    <ellipse cx="122" cy="56" rx="16" ry="50" fill="#F4F0EC" transform="rotate(10 122 56)"/>
+    <circle cx="158" cy="186" r="14" fill="#fff"/>
+    <ellipse cx="100" cy="180" rx="54" ry="48" fill="#F4F0EC"/>
+    <ellipse cx="72" cy="224" rx="18" ry="9" fill="#F4F0EC"/><ellipse cx="128" cy="224" rx="18" ry="9" fill="#F4F0EC"/>
+    <circle cx="100" cy="118" r="44" fill="#F4F0EC"/>
+  </g>
+  <ellipse cx="78" cy="58" rx="7" ry="36" fill="#F7B7C3" transform="rotate(-10 78 58)"/>
+  <ellipse cx="122" cy="58" rx="7" ry="36" fill="#F7B7C3" transform="rotate(10 122 58)"/>
+  <ellipse cx="100" cy="190" rx="30" ry="28" fill="#FFFFFF"/>
+  <circle cx="84" cy="114" r="6.5" fill="#1E1412"/><circle cx="116" cy="114" r="6.5" fill="#1E1412"/>
+  <circle cx="86" cy="112" r="2.2" fill="#fff"/><circle cx="118" cy="112" r="2.2" fill="#fff"/>
+  <path d="M95 128 l5 5 l5 -5z" fill="#E86A8A"/>
+  <path d="M100 133 q-6 7 -11 2 M100 133 q6 7 11 2" stroke="#3A2626" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <circle cx="72" cy="132" r="7" fill="#F48FC2" opacity=".5"/><circle cx="128" cy="132" r="7" fill="#F48FC2" opacity=".5"/>
+</svg>

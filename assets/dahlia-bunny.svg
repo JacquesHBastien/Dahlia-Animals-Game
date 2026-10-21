@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 250" width="200" height="250">
+  <title>Dahlia as a Bunny</title>
+  <g stroke="#3A2626" stroke-width="3" stroke-linejoin="round">
+    <ellipse cx="78" cy="62" rx="16" ry="50" fill="#8B5A3C" transform="rotate(-10 78 62)"/>
+    <ellipse cx="122" cy="62" rx="16" ry="50" fill="#8B5A3C" transform="rotate(10 122 62)"/>
+    <circle cx="158" cy="192" r="14" fill="#F48FC2"/>
+    <ellipse cx="100" cy="186" rx="54" ry="48" fill="#8B5A3C"/>
+    <rect x="52" y="222" width="38" height="20" rx="9" fill="#3B8FE0"/><rect x="110" y="222" width="38" height="20" rx="9" fill="#3B8FE0"/>
+    <circle cx="100" cy="124" r="44" fill="#8B5A3C"/>
+  </g>
+  <!-- twist texture on ears -->
+  <g fill="none" stroke="#1E1412" stroke-width="4" stroke-linecap="round" stroke-dasharray="5 6">
+    <path d="M74 20 Q70 60 78 100" transform="rotate(-10 78 62)"/><path d="M126 20 Q130 60 122 100" transform="rotate(10 122 62)"/>
+  </g>
+  <!-- pink bows on ears -->
+  <g fill="#E6378F" stroke="#3A2626" stroke-width="2.5" stroke-linejoin="round">
+    <path d="M72 82 l-14 -8 v16z M72 82 l14 -8 v16z"/><circle cx="72" cy="82" r="4"/>
+    <path d="M128 82 l-14 -8 v16z M128 82 l14 -8 v16z"/><circle cx="128" cy="82" r="4"/>
+  </g>
+  <ellipse cx="100" cy="196" rx="30" ry="28" fill="#C49272"/>
+  <circle cx="84" cy="122" r="6" fill="#1E1412"/><circle cx="116" cy="122" r="6" fill="#1E1412"/>
+  <circle cx="86" cy="120" r="2" fill="#fff"/><circle cx="118" cy="120" r="2" fill="#fff"/>
+  <g fill="#fff" fill-opacity=".18" stroke="#E6378F" stroke-width="5"><rect x="69" y="110" width="29" height="24" rx="10"/><rect x="102" y="110" width="29" height="24" rx="10"/></g>
+  <path d="M98 118 Q100 115 102 118" stroke="#E6378F" stroke-width="4" fill="none"/>
+  <path d="M95 138 l5 5 l5 -5z" fill="#E86A8A"/>
+  <path d="M100 143 q-6 7 -11 2 M100 143 q6 7 11 2" stroke="#1E1412" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <circle cx="70" cy="140" r="7" fill="#D9707A" opacity=".55"/><circle cx="130" cy="140" r="7" fill="#D9707A" opacity=".55"/>
+</svg>

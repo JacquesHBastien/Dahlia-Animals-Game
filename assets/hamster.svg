@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 180" width="200" height="180">
+  <title>Hamster</title>
+  <g stroke="#3A2626" stroke-width="3" stroke-linejoin="round">
+    <circle cx="62" cy="50" r="16" fill="#E8A85C"/><circle cx="138" cy="50" r="16" fill="#E8A85C"/>
+    <ellipse cx="78" cy="160" rx="16" ry="9" fill="#F7B7C3"/><ellipse cx="122" cy="160" rx="16" ry="9" fill="#F7B7C3"/>
+    <ellipse cx="100" cy="104" rx="66" ry="60" fill="#E8A85C"/>
+  </g>
+  <circle cx="62" cy="50" r="8" fill="#F7B7C3"/><circle cx="138" cy="50" r="8" fill="#F7B7C3"/>
+  <ellipse cx="100" cy="126" rx="44" ry="36" fill="#FFF1DC"/>
+  <ellipse cx="62" cy="104" rx="20" ry="16" fill="#FFF1DC"/><ellipse cx="138" cy="104" rx="20" ry="16" fill="#FFF1DC"/>
+  <circle cx="78" cy="84" r="7" fill="#1E1412"/><circle cx="122" cy="84" r="7" fill="#1E1412"/>
+  <circle cx="80" cy="82" r="2.2" fill="#fff"/><circle cx="124" cy="82" r="2.2" fill="#fff"/>
+  <ellipse cx="100" cy="98" rx="5" ry="3.5" fill="#E86A8A"/>
+  <path d="M100 102 q-6 7 -11 2 M100 102 q6 7 11 2" stroke="#3A2626" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <circle cx="64" cy="102" r="7" fill="#E8795C" opacity=".4"/><circle cx="136" cy="102" r="7" fill="#E8795C" opacity=".4"/>
+  <g stroke="#3A2626" stroke-width="3" fill="#E8A85C" stroke-linejoin="round"><ellipse cx="84" cy="132" rx="9" ry="7"/><ellipse cx="116" cy="132" rx="9" ry="7"/></g>
+</svg>

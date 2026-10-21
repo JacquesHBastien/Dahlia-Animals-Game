@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 540" width="1920" height="540" preserveAspectRatio="xMidYMax slice">
+  <title>Scene 4: Cloud Hills</title>
+  <defs><linearGradient id="sky4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F9C9E3"/><stop offset="1" stop-color="#EAF8FB"/></linearGradient></defs>
+  <rect width="1920" height="540" fill="url(#sky4)"/>
+  <!-- soft rainbow behind the hills -->
+  <g fill="none" stroke-width="22" opacity=".55">
+    <circle cx="1500" cy="470" r="330" stroke="#F48FC2"/>
+    <circle cx="1500" cy="470" r="308" stroke="#FFD166"/>
+    <circle cx="1500" cy="470" r="286" stroke="#9DD3F5"/>
+    <circle cx="1500" cy="470" r="264" stroke="#C9A7F5"/>
+  </g>
+  <!-- big fluffy sky clouds (no outline, so they stay in the background) -->
+  <g fill="#fff" opacity=".95">
+    <path d="M120 150 a40 40 0 0 1 74 -18 a48 48 0 0 1 86 18 a32 32 0 0 1 0 54 h-160 a27 27 0 0 1 0 -54z"/>
+    <path d="M560 90 a30 30 0 0 1 56 -14 a36 36 0 0 1 64 14 a24 24 0 0 1 0 40 h-120 a20 20 0 0 1 0 -40z"/>
+    <path d="M1180 60 a34 34 0 0 1 64 -16 a40 40 0 0 1 72 16 a28 28 0 0 1 0 46 h-136 a23 23 0 0 1 0 -46z"/>
+    <path d="M1720 130 a24 24 0 0 1 46 -10 a28 28 0 0 1 50 10 a20 20 0 0 1 0 32 h-96 a16 16 0 0 1 0 -32z"/>
+  </g>
+  <path d="M0 350 Q320 280 700 340 T1400 320 T1920 340 V540 H0Z" fill="#BFE3B4"/>
+  <path d="M0 405 Q400 360 820 398 T1600 386 T1920 400 V540 H0Z" fill="#9CCB8F"/>
+  <rect y="450" width="1920" height="90" fill="#E8C98E"/>
+  <path d="M0 450 H1920" stroke="#D4AF6E" stroke-width="4"/>
+  <g fill="#F48FC2"><circle cx="240" cy="432" r="8"/><circle cx="1460" cy="430" r="9"/><circle cx="1800" cy="434" r="7"/></g>
+  <g fill="#FFD166"><circle cx="262" cy="428" r="6"/><circle cx="560" cy="434" r="7"/><circle cx="1480" cy="436" r="6"/></g>
+  <g fill="#C9A7F5"><circle cx="1100" cy="432" r="8"/><circle cx="1120" cy="436" r="6"/></g>
+</svg>

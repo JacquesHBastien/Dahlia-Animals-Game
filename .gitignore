@@ -1,0 +1,16 @@
+# Only the game itself goes on GitHub.
+# Everything else in this folder (the design notes, the zip, sheet.png) stays on this computer.
+/*
+!/.gitignore
+!/README.md
+!/index.html
+!/style.css
+!/game.js
+!/challenges.js
+!/sounds.js
+!/music.js
+!/data/
+!/assets/
+
+# Mac folder files
+.DS_Store

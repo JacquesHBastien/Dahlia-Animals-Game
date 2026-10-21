@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <title>Transform Glitter</title>
+  <defs><path id="s" d="M0 -14 Q2 -2 14 0 Q2 2 0 14 Q-2 2 -14 0 Q-2 -2 0 -14Z"/></defs>
+  <circle cx="100" cy="100" r="78" fill="none" stroke="#F48FC2" stroke-width="4" stroke-dasharray="4 10" stroke-linecap="round"/>
+  <use href="#s" x="100" y="20" fill="#FFD166"/><use href="#s" x="170" y="70" fill="#F48FC2" transform="scale(1)"/>
+  <use href="#s" x="160" y="150" fill="#9DD3F5"/><use href="#s" x="40" y="150" fill="#FFD166"/>
+  <use href="#s" x="28" y="72" fill="#C9A7F5"/><use href="#s" x="100" y="182" fill="#F48FC2"/>
+  <g fill="#fff" stroke="#FFD166" stroke-width="2"><circle cx="64" cy="40" r="4"/><circle cx="140" cy="36" r="3"/><circle cx="182" cy="112" r="3"/><circle cx="16" cy="112" r="4"/><circle cx="70" cy="172" r="3"/><circle cx="134" cy="176" r="4"/></g>
+</svg>

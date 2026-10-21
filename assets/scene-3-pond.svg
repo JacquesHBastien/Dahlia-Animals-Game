@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 540" width="1920" height="540" preserveAspectRatio="xMidYMax slice">
+  <title>Scene 3: Sparkle Pond</title>
+  <defs><linearGradient id="sky3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFC9A8"/><stop offset="1" stop-color="#FFF0D6"/></linearGradient></defs>
+  <rect width="1920" height="540" fill="url(#sky3)"/>
+  <circle cx="1500" cy="140" r="60" fill="#FFD166"/>
+  <g fill="#fff" opacity=".9"><path d="M300 120 a30 30 0 0 1 56 -14 a36 36 0 0 1 64 14 a24 24 0 0 1 0 40 h-120 a20 20 0 0 1 0 -40z"/><path d="M1060 90 a24 24 0 0 1 46 -10 a28 28 0 0 1 50 10 a20 20 0 0 1 0 32 h-96 a16 16 0 0 1 0 -32z"/></g>
+  <path d="M0 340 Q400 290 820 330 T1920 320 V540 H0Z" fill="#A5CF8E"/>
+  <rect y="450" width="1920" height="90" fill="#E8C98E"/><path d="M0 450 H1920" stroke="#D4AF6E" stroke-width="4"/>
+  <ellipse cx="960" cy="410" rx="420" ry="52" fill="#6CC4E0" stroke="#3A2626" stroke-width="3"/>
+  <g stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".8"><path d="M700 400 h60 M880 420 h80 M1080 398 h70 M1200 418 h40"/></g>
+  <g stroke="#3A2626" stroke-width="3"><ellipse cx="820" cy="412" rx="34" ry="12" fill="#5FA46A"/><ellipse cx="1120" cy="404" rx="30" ry="11" fill="#5FA46A"/></g>
+  <circle cx="824" cy="404" r="7" fill="#F48FC2"/>
+  <g stroke="#5E8A4A" stroke-width="5" stroke-linecap="round"><path d="M500 440 V380 M520 440 V366 M540 440 V390 M1420 440 V376 M1440 440 V362 M1460 440 V386"/></g>
+  <g fill="#7A4E36"><rect x="514" y="356" width="12" height="24" rx="6"/><rect x="1434" y="352" width="12" height="24" rx="6"/></g>
+  <g fill="#FFD166"><path d="M960 360 l3 8 8 3 -8 3 -3 8 -3 -8 -8 -3 8 -3z"/><path d="M760 380 l2 6 6 2 -6 2 -2 6 -2 -6 -6 -2 6 -2z"/><path d="M1180 376 l2 6 6 2 -6 2 -2 6 -2 -6 -6 -2 6 -2z"/></g>
+  <g fill="#F48FC2"><circle cx="200" cy="434" r="8"/><circle cx="1760" cy="432" r="8"/></g><g fill="#FFD166"><circle cx="220" cy="430" r="6"/><circle cx="1740" cy="438" r="6"/></g>
+</svg>

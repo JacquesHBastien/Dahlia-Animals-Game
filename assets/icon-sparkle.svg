@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <title>Sparkle</title>
+  <defs><path id="s" d="M0 -14 Q2 -2 14 0 Q2 2 0 14 Q-2 2 -14 0 Q-2 -2 0 -14Z"/></defs>
+  <!-- big star in the middle -->
+  <path d="M50 8 Q55 45 92 50 Q55 55 50 92 Q45 55 8 50 Q45 45 50 8Z"
+        fill="#FFD166" stroke="#3A2626" stroke-width="3" stroke-linejoin="round"/>
+  <!-- little stars around it -->
+  <use href="#s" transform="translate(80 20) scale(0.8)" fill="#FFFFFF" stroke="#3A2626" stroke-width="2.5"/>
+  <use href="#s" transform="translate(20 80) scale(0.8)" fill="#9DD3F5" stroke="#3A2626" stroke-width="2.5"/>
+</svg>

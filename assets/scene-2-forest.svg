@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 540" width="1920" height="540" preserveAspectRatio="xMidYMax slice">
+  <title>Scene 2: Mushroom Forest</title>
+  <defs><linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C7B8F0"/><stop offset="1" stop-color="#F6E9F7"/></linearGradient></defs>
+  <rect width="1920" height="540" fill="url(#sky2)"/>
+  <g fill="#8FB89A">
+    <path d="M60 420 L140 160 L220 420Z"/><path d="M420 420 L520 120 L620 420Z"/><path d="M880 420 L960 180 L1040 420Z"/><path d="M1300 420 L1400 130 L1500 420Z"/><path d="M1720 420 L1800 170 L1880 420Z"/>
+  </g>
+  <g fill="#4F8E62">
+    <g><rect x="250" y="300" width="24" height="130" rx="8" fill="#7A4E36"/><path d="M180 330 L262 140 L344 330Z"/><path d="M196 260 L262 100 L328 260Z"/></g>
+    <g><rect x="720" y="300" width="24" height="130" rx="8" fill="#7A4E36"/><path d="M650 330 L732 150 L814 330Z"/><path d="M666 260 L732 110 L798 260Z"/></g>
+    <g><rect x="1150" y="300" width="24" height="130" rx="8" fill="#7A4E36"/><path d="M1080 330 L1162 140 L1244 330Z"/><path d="M1096 260 L1162 96 L1228 260Z"/></g>
+    <g><rect x="1600" y="300" width="24" height="130" rx="8" fill="#7A4E36"/><path d="M1530 330 L1612 150 L1694 330Z"/><path d="M1546 260 L1612 110 L1678 260Z"/></g>
+  </g>
+  <path d="M0 400 Q480 370 960 396 T1920 392 V540 H0Z" fill="#6FAE76"/>
+  <rect y="450" width="1920" height="90" fill="#B98F6A"/><path d="M0 450 H1920" stroke="#9C7452" stroke-width="4"/>
+  <g stroke="#3A2626" stroke-width="3">
+    <g><rect x="470" y="410" width="18" height="40" rx="6" fill="#FFF1DC"/><path d="M446 414 Q479 368 512 414Z" fill="#E6378F"/></g>
+    <g><rect x="1000" y="420" width="14" height="30" rx="5" fill="#FFF1DC"/><path d="M982 424 Q1007 390 1032 424Z" fill="#C9A7F5"/></g>
+    <g><rect x="1440" y="404" width="20" height="46" rx="6" fill="#FFF1DC"/><path d="M1414 408 Q1450 356 1486 408Z" fill="#F4A259"/></g>
+  </g>
+  <g fill="#fff"><circle cx="460" cy="400" r="5"/><circle cx="492" cy="396" r="4"/><circle cx="1430" cy="392" r="5"/><circle cx="1468" cy="390" r="4"/></g>
+  <g fill="#FFD166" opacity=".9"><circle cx="360" cy="220" r="4"/><circle cx="880" cy="260" r="3"/><circle cx="1280" cy="200" r="4"/><circle cx="1760" cy="250" r="3"/><circle cx="600" cy="300" r="3"/></g>
+</svg>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 200" width="220" height="200">
+  <title>Cat</title>
+  <g stroke="#3A2626" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M168 128 Q206 112 194 72 Q190 60 182 66" fill="none" stroke-width="14" stroke="#3A2626"/>
+    <path d="M168 128 Q206 112 194 72 Q190 60 182 66" fill="none" stroke-width="9" stroke="#F4A259"/>
+    <rect x="62" y="150" width="18" height="34" rx="8" fill="#F4A259"/>
+    <rect x="140" y="150" width="18" height="34" rx="8" fill="#F4A259"/>
+    <ellipse cx="114" cy="132" rx="62" ry="36" fill="#F4A259"/>
+    <rect x="86" y="152" width="18" height="34" rx="8" fill="#F4A259"/>
+    <rect x="116" y="152" width="18" height="34" rx="8" fill="#F4A259"/>
+    <path d="M38 52 L46 14 L72 40Z" fill="#F4A259"/><path d="M104 40 L128 14 L134 52Z" fill="#F4A259"/>
+    <circle cx="86" cy="72" r="46" fill="#F4A259"/>
+  </g>
+  <path d="M46 26 L50 40 L60 36Z M122 26 L126 40 L116 38Z" fill="#F7B7C3"/>
+  <ellipse cx="114" cy="146" rx="34" ry="16" fill="#FFE8CC"/>
+  <g stroke="#E07B39" stroke-width="5" stroke-linecap="round"><path d="M80 32 v12 M90 30 v14 M100 32 v12 M130 104 l-6 14 M150 106 l-6 14 M170 116 l-6 12"/></g>
+  <circle cx="70" cy="72" r="6" fill="#1E1412"/><circle cx="102" cy="72" r="6" fill="#1E1412"/>
+  <circle cx="72" cy="70" r="2" fill="#fff"/><circle cx="104" cy="70" r="2" fill="#fff"/>
+  <path d="M82 84 l4 4 l4 -4z" fill="#E86A8A"/>
+  <path d="M86 88 q-6 8 -12 2 M86 88 q6 8 12 2" stroke="#3A2626" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <g stroke="#3A2626" stroke-width="2" stroke-linecap="round"><path d="M60 84 h-22 M60 90 l-20 6 M112 84 h22 M112 90 l20 6"/></g>
+  <circle cx="62" cy="92" r="6" fill="#E8795C" opacity=".45"/><circle cx="110" cy="92" r="6" fill="#E8795C" opacity=".45"/>
+</svg>

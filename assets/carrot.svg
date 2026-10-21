@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 100" width="60" height="100">
+  <title>Carrot</title>
+  <!-- leafy top -->
+  <g fill="#5FA46A" stroke="#3A2626" stroke-width="3" stroke-linejoin="round">
+    <ellipse cx="22" cy="18" rx="6" ry="14" transform="rotate(-25 22 18)"/>
+    <ellipse cx="38" cy="18" rx="6" ry="14" transform="rotate(25 38 18)"/>
+    <ellipse cx="30" cy="14" rx="6" ry="14" fill="#6DB377"/>
+  </g>
+  <!-- carrot -->
+  <path d="M12 32 Q30 24 48 32 Q46 62 32 94 Q30 98 28 94 Q14 62 12 32Z" fill="#F4A259" stroke="#3A2626" stroke-width="3" stroke-linejoin="round"/>
+  <g stroke="#E07B39" stroke-width="3" stroke-linecap="round"><path d="M18 44 h8 M34 54 h8 M22 66 h7 M31 78 h5"/></g>
+</svg>

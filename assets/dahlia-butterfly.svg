@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 200" width="220" height="200">
+  <title>Dahlia as a Butterfly</title>
+  <g stroke="#3A2626" stroke-width="3" stroke-linejoin="round">
+    <path d="M104 98 Q44 20 22 62 Q10 104 102 110Z" fill="#F48FC2"/>
+    <path d="M116 98 Q176 20 198 62 Q210 104 118 110Z" fill="#F48FC2"/>
+    <path d="M102 114 Q44 118 50 160 Q66 182 104 126Z" fill="#9DD3F5"/>
+    <path d="M118 114 Q176 118 170 160 Q154 182 116 126Z" fill="#9DD3F5"/>
+    <rect x="100" y="84" width="20" height="72" rx="10" fill="#6B3E26"/>
+  </g>
+  <g fill="#fff" opacity=".85"><circle cx="54" cy="64" r="7"/><circle cx="166" cy="64" r="7"/><circle cx="72" cy="80" r="4"/><circle cx="148" cy="80" r="4"/><circle cx="70" cy="146" r="5"/><circle cx="150" cy="146" r="5"/></g>
+  <!-- pigtail puffs (twists) -->
+  <g stroke="#1E1412" stroke-width="3"><circle cx="76" cy="44" r="18" fill="#1E1412"/><circle cx="144" cy="44" r="18" fill="#1E1412"/></g>
+  <g fill="none" stroke="#4A3430" stroke-width="2" stroke-linecap="round"><path d="M66 38 q6 -6 12 0 M72 52 q6 -6 12 0 M134 38 q6 -6 12 0 M140 52 q6 -6 12 0"/></g>
+  <circle cx="110" cy="66" r="30" fill="#6B3E26" stroke="#3A2626" stroke-width="3"/>
+  <path d="M84 58 Q86 34 110 34 Q134 34 136 58 Q124 46 110 46 Q96 46 84 58Z" fill="#1E1412"/>
+  <path d="M100 36 Q90 14 80 12 M120 36 Q130 14 140 12" stroke="#3A2626" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <circle cx="80" cy="12" r="5" fill="#E6378F"/><circle cx="140" cy="12" r="5" fill="#E6378F"/>
+  <circle cx="99" cy="68" r="5" fill="#1E1412"/><circle cx="121" cy="68" r="5" fill="#1E1412"/>
+  <circle cx="101" cy="66" r="1.8" fill="#fff"/><circle cx="123" cy="66" r="1.8" fill="#fff"/>
+  <g fill="#fff" fill-opacity=".18" stroke="#E6378F" stroke-width="4"><rect x="87" y="57" width="22" height="20" rx="8"/><rect x="111" y="57" width="22" height="20" rx="8"/></g>
+  <circle cx="92" cy="82" r="5" fill="#D9707A" opacity=".55"/><circle cx="128" cy="82" r="5" fill="#D9707A" opacity=".55"/>
+  <path d="M103 84 Q110 92 117 84" stroke="#3A1A12" stroke-width="2.5" fill="#B8434F" stroke-linecap="round"/>
+</svg>

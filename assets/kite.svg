@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 200" width="120" height="200">
+  <title>Kite</title>
+  <!-- tail with bows -->
+  <path d="M60 140 Q46 156 62 168 Q78 180 64 196" fill="none" stroke="#3A2626" stroke-width="3" stroke-linecap="round"/>
+  <g stroke="#3A2626" stroke-width="2.5" stroke-linejoin="round">
+    <path d="M54 156 l-10 -6 v12z M54 156 l10 -6 v12z" fill="#FFD166"/>
+    <path d="M68 180 l-10 -6 v12z M68 180 l10 -6 v12z" fill="#E6378F"/>
+  </g>
+  <!-- the kite: four colored parts -->
+  <g stroke="#3A2626" stroke-width="3" stroke-linejoin="round">
+    <path d="M60 8 L60 70 L12 70Z" fill="#F48FC2"/>
+    <path d="M60 8 L108 70 L60 70Z" fill="#9DD3F5"/>
+    <path d="M12 70 L60 70 L60 140Z" fill="#9DD3F5"/>
+    <path d="M60 70 L108 70 L60 140Z" fill="#F48FC2"/>
+  </g>
+  <!-- happy face -->
+  <circle cx="48" cy="62" r="4" fill="#1E1412"/><circle cx="72" cy="62" r="4" fill="#1E1412"/>
+  <circle cx="49.5" cy="60.5" r="1.4" fill="#fff"/><circle cx="73.5" cy="60.5" r="1.4" fill="#fff"/>
+  <path d="M52 78 Q60 86 68 78" fill="none" stroke="#3A2626" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="40" cy="74" r="4" fill="#D9707A" opacity=".55"/><circle cx="80" cy="74" r="4" fill="#D9707A" opacity=".55"/>
+</svg>

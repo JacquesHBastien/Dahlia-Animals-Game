@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 220" width="720" height="220">
+  <title>Talk Bubble</title>
+  <rect x="6" y="6" width="708" height="180" rx="28" fill="#FFFDF7" stroke="#3A2626" stroke-width="5"/>
+  <path d="M90 184 L80 214 L120 184" fill="#FFFDF7" stroke="#3A2626" stroke-width="5" stroke-linejoin="round"/>
+  <rect x="84" y="182" width="40" height="8" fill="#FFFDF7"/>
+  <text x="36" y="56" font-family="Fredoka, Baloo 2, sans-serif" font-size="26" font-weight="700" fill="#E6378F">Cat says:</text>
+  <text x="36" y="96" font-family="Fredoka, Baloo 2, sans-serif" font-size="24" fill="#3A2626">Naps are just tiny vacations. Take one today!</text>
+  <rect x="36" y="122" width="220" height="46" rx="23" fill="#E6378F"/>
+  <text x="146" y="153" text-anchor="middle" font-family="Fredoka, Baloo 2, sans-serif" font-size="22" font-weight="700" fill="#fff">Become a Cat</text>
+  <rect x="272" y="122" width="230" height="46" rx="23" fill="#C9A7F5" stroke="#3A2626" stroke-width="3"/>
+  <text x="387" y="153" text-anchor="middle" font-family="Fredoka, Baloo 2, sans-serif" font-size="22" font-weight="700" fill="#3A2626">Teleport, Cat!</text>
+  <rect x="518" y="122" width="160" height="46" rx="23" fill="#fff" stroke="#3A2626" stroke-width="3"/>
+  <text x="598" y="153" text-anchor="middle" font-family="Fredoka, Baloo 2, sans-serif" font-size="22" font-weight="700" fill="#3A2626">Bye, Cat!</text>
+</svg>

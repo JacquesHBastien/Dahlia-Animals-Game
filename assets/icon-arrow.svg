@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <title>Arrow</title>
+  <path d="M32 10 L54 38 Q56 42 52 42 H42 V52 Q42 55 39 55 H25 Q22 55 22 52 V42 H12 Q8 42 10 38Z"
+        fill="#E6378F" stroke="#3A2626" stroke-width="3" stroke-linejoin="round"/>
+</svg>

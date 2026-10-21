@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 100" width="40" height="100">
+  <title>Bowling Pin</title>
+  <path d="M20 4 C30 4 31 18 28 28 C26 36 25 40 27 46 C34 58 38 70 36 84 C34 94 28 98 20 98 C12 98 6 94 4 84 C2 70 6 58 13 46 C15 40 14 36 12 28 C9 18 10 4 20 4Z" fill="#FFFDF7"/>
+  <!-- two pink stripes on the neck -->
+  <rect x="11" y="31" width="18" height="4" fill="#E6378F"/>
+  <rect x="11" y="38" width="18" height="4" fill="#E6378F"/>
+  <path d="M20 4 C30 4 31 18 28 28 C26 36 25 40 27 46 C34 58 38 70 36 84 C34 94 28 98 20 98 C12 98 6 94 4 84 C2 70 6 58 13 46 C15 40 14 36 12 28 C9 18 10 4 20 4Z" fill="none" stroke="#3A2626" stroke-width="3" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,180 @@
+/* Magic Animals & Friends: page styles
+   The game world is drawn on the canvas. This file centers the game,
+   and styles the title screen and the touch buttons on top of it.
+
+   --u is "one game pixel". game.js sets it, so that
+   calc(var(--u) * 40) is 40 game pixels on any screen size. */
+
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;            /* no scrollbars */
+  background: #3A2626;         /* outline brown frames the game */
+  font-family: Fredoka, "Baloo 2", sans-serif;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: none;          /* stop the iPad from scrolling or zooming */
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none; /* no pop-up menu on a long press */
+}
+
+/* The 16:9 game area. game.js sets its width and height. */
+#stage {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  --u: 1px;
+}
+
+#game {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ---------- Title screen ---------- */
+
+#title {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#title[hidden] { display: none; }
+
+#title .card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #FFFDF7;
+  border: calc(var(--u) * 5) solid #3A2626;
+  border-radius: calc(var(--u) * 36);
+  padding: calc(var(--u) * 22) calc(var(--u) * 48) calc(var(--u) * 18);
+}
+
+#title h1 {
+  margin: 0;
+  color: #E6378F;
+  font-size: calc(var(--u) * 52);
+  font-weight: 700;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+/* Dahlia sways side to side and bobs, saying hello */
+#title .waving {
+  height: calc(var(--u) * 165);
+  margin: calc(var(--u) * 10) 0;
+  transform-origin: 50% 100%;
+  animation: wave 1.2s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0%, 100% { transform: rotate(-7deg) translateY(0); }
+  50%      { transform: rotate(7deg) translateY(calc(var(--u) * -8)); }
+}
+
+#play {
+  background: #E6378F;
+  color: #FFFFFF;
+  font-size: calc(var(--u) * 36);
+  font-weight: 700;
+  border: calc(var(--u) * 4) solid #3A2626;
+  border-radius: calc(var(--u) * 40);
+  padding: calc(var(--u) * 8) calc(var(--u) * 64);
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+#play:focus-visible { outline: calc(var(--u) * 4) solid #9DD3F5; }
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.06); }
+}
+
+#title .howto {
+  margin: calc(var(--u) * 12) 0 0;
+  color: #3A2626;
+  font-size: calc(var(--u) * 22);
+}
+
+#title .credit {
+  margin: calc(var(--u) * 6) 0 0;
+  color: #E6378F;
+  font-weight: 700;
+  font-size: calc(var(--u) * 24);
+}
+
+/* ---------- Touch buttons ---------- */
+
+#touch[hidden] { display: none; }
+
+#touch button {
+  position: absolute;
+  padding: 0;
+  background: rgba(255, 253, 247, 0.85);  /* paper, a little see-through */
+  border: calc(var(--u) * 4) solid #3A2626;
+  touch-action: none;
+}
+
+#touch button img {
+  width: 60%;
+  height: 60%;
+  pointer-events: none;
+}
+
+/* Held down: a little smaller and pink */
+#touch button.held {
+  background: #F48FC2;
+  transform: scale(0.92);
+}
+
+/* Four arrows in a plus shape, bottom left */
+.dpad {
+  position: absolute;
+  left: calc(var(--u) * 16);
+  bottom: calc(var(--u) * 16);
+  width: calc(var(--u) * 216);
+  height: calc(var(--u) * 216);
+}
+
+.dpad .arrow {
+  width: calc(var(--u) * 72);
+  height: calc(var(--u) * 72);
+  border-radius: calc(var(--u) * 22);
+}
+
+.dpad .up    { left: calc(var(--u) * 72); top: 0; }
+.dpad .left  { left: 0;                   top: calc(var(--u) * 72); }
+.dpad .right { left: calc(var(--u) * 144); top: calc(var(--u) * 72); }
+.dpad .down  { left: calc(var(--u) * 72); top: calc(var(--u) * 144); }
+
+/* The arrow picture points up; turn it for the other buttons */
+.dpad .left  img { transform: rotate(-90deg); }
+.dpad .right img { transform: rotate(90deg); }
+.dpad .down  img { transform: rotate(180deg); }
+
+/* Big round sparkle button, bottom right */
+#touch .sparkle {
+  right: calc(var(--u) * 24);
+  bottom: calc(var(--u) * 24);
+  width: calc(var(--u) * 120);
+  height: calc(var(--u) * 120);
+  border-radius: 50%;
+  background: rgba(230, 55, 143, 0.9);
+}
+
+#touch .sparkle.held { background: #F48FC2; }
