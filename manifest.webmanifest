@@ -1,0 +1,16 @@
+{
+  "name": "Magic Animals & Friends",
+  "short_name": "Magic Animals",
+  "description": "A game designed by Dahlia: become animals, solve challenges, find every gem.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "#3A2626",
+  "theme_color": "#E6378F",
+  "icons": [
+    { "src": "assets/app-icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "assets/app-icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "assets/app-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

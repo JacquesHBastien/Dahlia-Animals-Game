@@ -4,6 +4,7 @@
 !/.gitignore
 !/README.md
 !/index.html
+!/manifest.webmanifest
 !/style.css
 !/game.js
 !/challenges.js

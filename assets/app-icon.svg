@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>Magic Animals app icon</title>
+  <!-- soft pink background (the iPad rounds the corners itself) -->
+  <rect width="512" height="512" fill="#F9C9E3"/>
+  <circle cx="256" cy="300" r="210" fill="#FFFDF7" opacity=".55"/>
+  <!-- sparkles -->
+  <g stroke="#3A2626" stroke-width="5" stroke-linejoin="round">
+    <path d="M78 96 Q84 126 114 132 Q84 138 78 168 Q72 138 42 132 Q72 126 78 96Z" fill="#FFD166"/>
+    <path d="M440 70 Q444 92 466 96 Q444 100 440 122 Q436 100 414 96 Q436 92 440 70Z" fill="#9DD3F5"/>
+    <path d="M444 380 Q448 402 470 406 Q448 410 444 432 Q440 410 418 406 Q440 402 444 380Z" fill="#FFFFFF"/>
+  </g>
+  <!-- Dahlia's face, from her own picture (dahlia.svg) -->
+  <svg x="36" y="56" width="440" height="456" viewBox="38 34 124 128">
+<g stroke="#3A2626" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+    <!-- legs -->
+    <rect x="80" y="188" width="15" height="32" rx="6" fill="#6B3E26"/>
+    <rect x="105" y="188" width="15" height="32" rx="6" fill="#6B3E26"/>
+    <!-- blue rain boots -->
+    <path d="M74 212 h24 v30 a6 6 0 0 1 -6 6 h-22 a6 6 0 0 1 -2 -12 l6 -2z" fill="#3B8FE0"/>
+    <path d="M102 212 h24 l6 22 a6 6 0 0 1 -2 12 h-22 a6 6 0 0 1 -6 -6z" fill="#3B8FE0"/>
+    <!-- arms -->
+    <rect x="50" y="138" width="16" height="48" rx="8" fill="#6B3E26" transform="rotate(12 58 140)"/>
+    <rect x="134" y="138" width="16" height="48" rx="8" fill="#6B3E26" transform="rotate(-12 142 140)"/>
+    <!-- dress -->
+    <path d="M74 128 h52 l22 66 q-48 10 -96 0z" fill="#9DD3F5"/>
+    <circle cx="68" cy="138" r="13" fill="#9DD3F5"/>
+    <circle cx="132" cy="138" r="13" fill="#9DD3F5"/>
+    <!-- neck -->
+    <rect x="92" y="118" width="16" height="14" fill="#6B3E26"/>
+    <!-- ears -->
+    <circle cx="58" cy="90" r="8" fill="#6B3E26"/>
+    <circle cx="142" cy="90" r="8" fill="#6B3E26"/>
+    <!-- head -->
+    <circle cx="100" cy="86" r="42" fill="#6B3E26"/>
+  </g>
+  <!-- dress flowers -->
+  <g fill="#FFFFFF" opacity=".9">
+    <circle cx="88" cy="150" r="3.5"/><circle cx="112" cy="146" r="3.5"/><circle cx="100" cy="166" r="3.5"/>
+    <circle cx="80" cy="178" r="3.5"/><circle cx="120" cy="176" r="3.5"/><circle cx="66" cy="138" r="3"/><circle cx="134" cy="138" r="3"/>
+  </g>
+  <!-- hair cap -->
+  <path d="M56 84 Q56 40 100 40 Q144 40 144 84 Q132 62 100 60 Q70 60 56 84Z" fill="#1E1412" stroke="#1E1412" stroke-width="4" stroke-linejoin="round"/>
+  <!-- twists -->
+  <g fill="none" stroke-linecap="round">
+    <g stroke="#1E1412" stroke-width="10">
+      <path d="M60 66 Q50 92 52 122"/><path d="M68 56 Q60 86 64 116"/><path d="M58 78 Q44 100 46 128"/>
+      <path d="M140 66 Q150 92 148 122"/><path d="M132 56 Q140 86 136 116"/><path d="M142 78 Q156 100 154 128"/>
+      <path d="M104 44 Q86 54 74 76"/>
+    </g>
+    <g stroke="#4A3430" stroke-width="2" stroke-dasharray="3 6">
+      <path d="M60 66 Q50 92 52 122"/><path d="M68 56 Q60 86 64 116"/><path d="M58 78 Q44 100 46 128"/>
+      <path d="M140 66 Q150 92 148 122"/><path d="M132 56 Q140 86 136 116"/><path d="M142 78 Q156 100 154 128"/>
+      <path d="M104 44 Q86 54 74 76"/>
+    </g>
+  </g>
+  <!-- face -->
+  <ellipse cx="82" cy="90" rx="9" ry="10" fill="#fff"/><ellipse cx="118" cy="90" rx="9" ry="10" fill="#fff"/>
+  <circle cx="83" cy="91" r="6" fill="#1E1412"/><circle cx="117" cy="91" r="6" fill="#1E1412"/>
+  <circle cx="85" cy="88" r="2" fill="#fff"/><circle cx="119" cy="88" r="2" fill="#fff"/>
+  <!-- pink glasses -->
+  <g fill="#ffffff" fill-opacity=".18" stroke="#E6378F" stroke-width="5">
+    <rect x="66" y="76" width="31" height="27" rx="11"/><rect x="103" y="76" width="31" height="27" rx="11"/>
+  </g>
+  <path d="M97 86 Q100 83 103 86" stroke="#E6378F" stroke-width="4" fill="none"/>
+  <path d="M66 84 L58 82 M134 84 L142 82" stroke="#E6378F" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="74" cy="110" r="7" fill="#D9707A" opacity=".55"/><circle cx="126" cy="110" r="7" fill="#D9707A" opacity=".55"/>
+  <path d="M97 104 q3 3 6 0" stroke="#4A2A1C" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M88 113 Q100 124 112 113" stroke="#3A1A12" stroke-width="3" fill="#B8434F" stroke-linecap="round" stroke-linejoin="round"/>
+
+  </svg>
+</svg>
