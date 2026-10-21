@@ -37,15 +37,14 @@
       </div>
     </div>
 
-    <!-- Touch buttons (only shown on iPads and phones) -->
+    <!-- Touch buttons (only shown on iPads and phones), like a game controller:
+         left thumb moves, right thumb jumps, does magic, and does special moves (Down) -->
     <div id="touch" hidden>
-      <div class="dpad">
-        <button class="arrow up"    data-key="ArrowUp"    aria-label="Up"><img src="assets/icon-arrow.svg" alt=""></button>
-        <button class="arrow left"  data-key="ArrowLeft"  aria-label="Left"><img src="assets/icon-arrow.svg" alt=""></button>
-        <button class="arrow right" data-key="ArrowRight" aria-label="Right"><img src="assets/icon-arrow.svg" alt=""></button>
-        <button class="arrow down"  data-key="ArrowDown"  aria-label="Down"><img src="assets/icon-arrow.svg" alt=""></button>
-      </div>
-      <button class="sparkle" data-key=" " aria-label="Magic"><img src="assets/icon-sparkle.svg" alt=""></button>
+      <button class="move left"  data-key="ArrowLeft"  aria-label="Left"><img src="assets/icon-arrow.svg" alt=""></button>
+      <button class="move right" data-key="ArrowRight" aria-label="Right"><img src="assets/icon-arrow.svg" alt=""></button>
+      <button class="action jump"  data-key="ArrowUp"   aria-label="Jump"><img src="assets/icon-arrow.svg" alt=""><span>Jump</span></button>
+      <button class="action magic" data-key=" "         aria-label="Magic"><img src="assets/icon-sparkle.svg" alt=""><span>Magic</span></button>
+      <button class="action down"  data-key="ArrowDown" aria-label="Down"><img src="assets/icon-arrow.svg" alt=""><span>Down</span></button>
     </div>
   </div>
 

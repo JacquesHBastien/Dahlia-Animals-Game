@@ -142,39 +142,54 @@ button {
   transform: scale(0.92);
 }
 
-/* Four arrows in a plus shape, bottom left */
-.dpad {
-  position: absolute;
-  left: calc(var(--u) * 16);
-  bottom: calc(var(--u) * 16);
-  width: calc(var(--u) * 216);
-  height: calc(var(--u) * 216);
+/* Left thumb: two big arrows, bottom left */
+#touch .move {
+  bottom: calc(var(--u) * 24);
+  width: calc(var(--u) * 100);
+  height: calc(var(--u) * 100);
+  border-radius: calc(var(--u) * 28);
 }
+#touch .move.left  { left: calc(var(--u) * 20); }
+#touch .move.right { left: calc(var(--u) * 136); }
+#touch .move.left  img { transform: rotate(-90deg); } /* the arrow picture points up */
+#touch .move.right img { transform: rotate(90deg); }
 
-.dpad .arrow {
-  width: calc(var(--u) * 72);
-  height: calc(var(--u) * 72);
-  border-radius: calc(var(--u) * 22);
+/* Right thumb: a big Jump button, Magic above it, Down to its left */
+#touch .action {
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: calc(var(--u) * 15);
+  color: #3A2626;
 }
+#touch .action img { width: 48%; height: 48%; }
+#touch .action span { pointer-events: none; margin-top: calc(var(--u) * 2); }
 
-.dpad .up    { left: calc(var(--u) * 72); top: 0; }
-.dpad .left  { left: 0;                   top: calc(var(--u) * 72); }
-.dpad .right { left: calc(var(--u) * 144); top: calc(var(--u) * 72); }
-.dpad .down  { left: calc(var(--u) * 72); top: calc(var(--u) * 144); }
-
-/* The arrow picture points up; turn it for the other buttons */
-.dpad .left  img { transform: rotate(-90deg); }
-.dpad .right img { transform: rotate(90deg); }
-.dpad .down  img { transform: rotate(180deg); }
-
-/* Big round sparkle button, bottom right */
-#touch .sparkle {
+#touch .jump {
   right: calc(var(--u) * 24);
   bottom: calc(var(--u) * 24);
-  width: calc(var(--u) * 120);
-  height: calc(var(--u) * 120);
-  border-radius: 50%;
-  background: rgba(230, 55, 143, 0.9);
+  width: calc(var(--u) * 116);
+  height: calc(var(--u) * 116);
+  background: rgba(157, 211, 245, 0.92); /* light blue */
 }
+#touch .magic {
+  right: calc(var(--u) * 38);
+  bottom: calc(var(--u) * 152);
+  width: calc(var(--u) * 92);
+  height: calc(var(--u) * 92);
+  background: rgba(230, 55, 143, 0.92);  /* pink */
+  color: #FFFFFF;
+}
+#touch .down {
+  right: calc(var(--u) * 156);
+  bottom: calc(var(--u) * 20);
+  width: calc(var(--u) * 78);
+  height: calc(var(--u) * 78);
+}
+#touch .down img { transform: rotate(180deg); }
 
-#touch .sparkle.held { background: #F48FC2; }
+#touch .action.held { background: #F48FC2; }

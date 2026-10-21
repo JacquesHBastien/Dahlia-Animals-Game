@@ -5,7 +5,9 @@ become them, and finish every challenge across five levels.
 
 **Play:** open `index.html` in a browser, or visit the GitHub Pages link for this repository.
 
-- Arrow keys (or W A S D) to move, Space for magic. On an iPad, use the on-screen buttons.
+- **Keyboard:** arrow keys (or W A S D) to move and jump, Down for special moves (and Dahlia's teleport),
+  Space for magic (hold it to change back into Dahlia), Esc for the menu, F for full screen.
+- **iPad:** move with the left buttons; Jump, Magic and Down are on the right.
 - Plain HTML, CSS and JavaScript. No build step.
 
 ## Where things are

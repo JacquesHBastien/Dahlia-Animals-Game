@@ -100,6 +100,8 @@ window.addEventListener('keydown', e => {
     }
     return;
   }
+  // F = full screen (it has to happen right here, while the key is being pressed)
+  if (e.key === 'f' || e.key === 'F') toggleFullscreen();
   pressKey(gameKey(e));
 });
 window.addEventListener('keyup', e => releaseKey(gameKey(e)));
@@ -132,8 +134,8 @@ const touchControls = document.getElementById('touch');
 
 // Title screen: a short "how to play" line that matches the device
 document.getElementById('howto').textContent = isTouch
-  ? 'Tap the arrows to move. Tap the sparkle for magic!'
-  : 'Arrow keys (or W A S D) to move. Space for magic!';
+  ? 'Arrows to move. Jump, Magic, and Down for special moves!'
+  : 'Arrows (or W A S D) to move and jump. Space for magic. Esc for the menu.';
 
 // Each button acts like holding down a key: press = key down, let go = key up
 for (const button of touchControls.querySelectorAll('button')) {
@@ -169,7 +171,7 @@ canvas.addEventListener('pointerdown', e => {
 
   // Tapped a button in the talk box or the "All done!" sign? Pick it,
   // and press Space for her (the game does the rest on the next frame).
-  const box = talk || finale || puzzle;
+  const box = talk || finale || puzzle || menu || picker;
   if (box) {
     tapButtons.forEach((b, i) => {
       if (tap.x >= b.x && tap.x <= b.x + b.w && tap.y >= b.y && tap.y <= b.y + b.h) {
@@ -178,17 +180,37 @@ canvas.addEventListener('pointerdown', e => {
       }
     });
   }
-  // Tapped the mute button? (It's hidden while the talk box is open.)
-  if (!talk && !puzzle && Math.hypot(tap.x - MUTE_BUTTON.x, tap.y - MUTE_BUTTON.y) <= MUTE_BUTTON.r) {
+  if (box) return;
+  const tapped = b => Math.hypot(tap.x - b.x, tap.y - b.y) <= b.r;
+  // The round buttons down the top right corner: mute, menu, full screen
+  if (tapped(MUTE_BUTTON)) {
     muted = Sounds.toggleMute();
     Music.setMuted(muted);       // the mute button turns off the music too
     Sounds.play('click'); // you only hear this when turning sound back on
   }
+  if (tapped(MENU_BUTTON)) openMenu();
+  if (canFullscreen && tapped(FULL_BUTTON)) toggleFullscreen();
 });
 
-// ---------- Mute ----------
-const MUTE_BUTTON = { x: VIEW_W - 42, y: 44, r: 26 }; // round button, top right corner
+// ---------- Mute, menu and full screen buttons ----------
+const MUTE_BUTTON = { x: VIEW_W - 42, y: 44, r: 26 };  // round buttons, top right corner
+const MENU_BUTTON = { x: VIEW_W - 42, y: 102, r: 26 };
+const FULL_BUTTON = { x: VIEW_W - 42, y: 160, r: 26 };
 let muted = false;
+
+// Full screen works in most browsers, including Safari on iPad. A game added to the
+// iPad's Home Screen is already full screen, so it doesn't need the button.
+const canFullscreen = !!(document.fullscreenEnabled || document.webkitFullscreenEnabled) && !navigator.standalone;
+
+function toggleFullscreen() {
+  if (!canFullscreen) return;
+  const isFull = document.fullscreenElement || document.webkitFullscreenElement;
+  if (isFull) (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+  else (stage.requestFullscreen || stage.webkitRequestFullscreen).call(stage);
+}
+// Re-fit the game when going in or out of full screen
+document.addEventListener('fullscreenchange', fitCanvasToWindow);
+document.addEventListener('webkitfullscreenchange', fitCanvasToWindow);
 
 // ---------- Friend Book ----------
 // A sticker for every animal Dahlia has become, and a gold star on it when she
@@ -203,6 +225,10 @@ let stickers = loadList(STICKERS_KEY); // names of the animals she has become, l
 let stars = loadList(STARS_KEY);       // names of the animals whose challenge she finished
 let newSticker = null;                 // { name, t } while a new sticker is popping in
 let newStar = null;                    // { name, t } while a new star is popping in
+
+// Fog she already cleared with a puzzle stays cleared (like '2-0': level 2, scene 0)
+const UNLOCKED_KEY = 'magicAnimals.unlocked';
+let unlocked = loadList(UNLOCKED_KEY);
 
 // ---------- Gems ----------
 // Sparkly gems hidden in every world, different ones in every level ("gems" in levels.js).
@@ -327,6 +353,7 @@ const player = {
   rollJump: false,   // Hamster: in a rolling jump
   inPit: null,       // the hole she's falling into (if she is)
   twirl: 0,          // time left in Dahlia's magic twirl
+  holdBack: 0,       // how long the magic button has been held to change back
 };
 
 const TWIRL_TIME = 0.6;
@@ -615,6 +642,17 @@ function updateSceneChange(dt) {
     sceneChange.done = true;
   }
 
+  // Dahlia's teleport: arrive near the start of the world she picked
+  if (!sceneChange.done && sceneChange.t >= FADE_TIME && sceneChange.teleport) {
+    sceneIndex = sceneChange.to;
+    Object.assign(player, { x: EDGE * 3, y: GROUND_Y, vx: 0, vy: 0, onGround: true, inPit: null });
+    updateCamera();
+    sceneTitle = { name: SCENES[sceneIndex].name, t: 0 };
+    Sounds.play('teleportBack');
+    makeSparkles(player.x, player.y - player.move.height / 2, 16);
+    sceneChange.done = true;
+  }
+
   // When the screen is all faded out: move to the new scene
   if (!sceneChange.done && sceneChange.t >= FADE_TIME) {
     const goingRight = sceneChange.to > sceneIndex;
@@ -683,7 +721,8 @@ function loadLevel(n) {
     scene.challenge = c;
     if (c) {
       c.done = hasStar(c.animal);
-      c.locked = !!data.gate && !c.done; // Levels 2 and 3: hidden in magic fog until the puzzle
+      // Levels 2-5: hidden in magic fog until the puzzle is solved (and it stays solved)
+      c.locked = !!data.gate && !c.done && !unlocked.includes(`${level}-${i}`);
       CHALLENGES[c.type].setup(c, scene);
     }
   });
@@ -714,9 +753,11 @@ function clearFriendBook() {
   stickers = [];
   stars = [];
   gems = [];
+  unlocked = [];
   saveList(STICKERS_KEY, stickers);
   saveList(STARS_KEY, stars);
   saveList(GEMS_KEY, gems);
+  saveList(UNLOCKED_KEY, unlocked);
   newSticker = null;
   newStar = null;
   saveNumber(LEVEL_KEY, 1);
@@ -792,7 +833,7 @@ function drawSignClue() {
   const c = signNearby();
   if (!c) return;
   let text = c.clue;
-  if (c.locked) text = isTouch ? 'Magic fog! Tap ✨ to solve the puzzle.' : 'Magic fog! Press Space to solve the puzzle.';
+  if (c.locked) text = isTouch ? 'Magic fog! Tap Magic to solve the puzzle.' : 'Magic fog! Press Space to solve the puzzle.';
   if (c.done) text = 'All done here! ⭐';
 
   ctx.font = `700 20px ${FONT}`;
@@ -889,6 +930,8 @@ function updatePuzzle(dt) {
     // Right! The fog puffs away
     const c = puzzle.c;
     c.locked = false;
+    unlocked.push(`${level}-${SCENES.findIndex(scene => scene.challenge === c)}`);
+    saveList(UNLOCKED_KEY, unlocked);
     puzzle = null;
     Sounds.play('teleportOut');
     Sounds.play('sticker');
@@ -1103,7 +1146,7 @@ function update(dt) {
   if (finaleWait > 0) {
     finaleWait -= dt;
     if (finaleWait <= 0) {
-      if (talk || magic || sceneChange || puzzle) finaleWait = 0.1; // wait until she's free
+      if (talk || magic || sceneChange || puzzle || menu || picker) finaleWait = 0.1; // wait until she's free
       else openFinale();
     }
   }
@@ -1114,7 +1157,19 @@ function update(dt) {
     return;
   }
 
-  // The game pauses while the talk box (or a puzzle) is open
+  // The game pauses while a menu, the talk box or a puzzle is open
+  if (menu) {
+    updateMenu();
+    return;
+  }
+  if (picker) {
+    updatePicker();
+    return;
+  }
+  if (justPressed.Escape && !talk && !puzzle && !magic) {
+    openMenu();
+    return;
+  }
   if (talk) {
     updateTalk();
     return;
@@ -1145,15 +1200,229 @@ function update(dt) {
       return;
     }
     if (player.form) {
-      // Space with nobody nearby, as an animal = turn back into Dahlia
-      startMagic(null);
-      return;
+      // As an animal, with nobody nearby: HOLD the magic button to change back into Dahlia
+      // (a quick tap does nothing, so she doesn't change back by accident)
+      player.holdBack = 0.001;
+    } else if (player.twirl <= 0) {
+      startTwirl(); // just Dahlia: her own magic twirl!
     }
-    if (player.twirl <= 0) startTwirl(); // just Dahlia: her own magic twirl!
+  }
+  if (updateHoldBack(dt)) return;
+
+  // Down, as plain Dahlia standing on the ground = her teleport magic: pick a world to go to
+  if (justPressed.ArrowDown && !player.form && player.onGround && !player.inPit) {
+    openPicker();
+    return;
   }
 
   updateWorld(dt);
   updateEffects(dt);
+}
+
+// ---------- Hold to change back ----------
+// A ring fills up around her while the magic button is held. Full ring = back to Dahlia.
+const HOLD_TIME = 0.8;
+
+// Gives back true if she just changed back (so the rest of this frame waits)
+function updateHoldBack(dt) {
+  if (player.holdBack <= 0) return false;
+  if (!keys[' '] || !player.form) {
+    player.holdBack = 0; // let go too early: nothing happens
+    return false;
+  }
+  player.holdBack += dt;
+  if (player.holdBack >= HOLD_TIME) {
+    player.holdBack = 0;
+    startMagic(null);
+    return true;
+  }
+  return false;
+}
+
+function drawHoldRing() {
+  if (player.holdBack < 0.08) return;
+  const p = player.holdBack / HOLD_TIME;
+  const x = player.x, y = player.y - player.move.height / 2;
+  ctx.lineWidth = 8;
+  ctx.lineCap = 'round';
+  ctx.strokeStyle = 'rgba(58, 38, 38, 0.35)';
+  ctx.beginPath();
+  ctx.arc(x, y, player.move.height * 0.7, 0, Math.PI * 2);
+  ctx.stroke();
+  ctx.strokeStyle = '#F48FC2';
+  ctx.beginPath();
+  ctx.arc(x, y, player.move.height * 0.7, -Math.PI / 2, -Math.PI / 2 + p * Math.PI * 2);
+  ctx.stroke();
+  ctx.lineCap = 'butt';
+  ctx.font = `700 18px ${FONT}`;
+  ctx.textAlign = 'center';
+  ctx.lineWidth = 5;
+  ctx.strokeStyle = '#FFFDF7';
+  ctx.strokeText('Keep holding...', x, y - player.move.height * 0.7 - 16);
+  ctx.fillStyle = '#E6378F';
+  ctx.fillText('Keep holding...', x, y - player.move.height * 0.7 - 16);
+}
+
+// ---------- Menus: the game menu, and Dahlia's teleport picker ----------
+// Both pause the game. Left/Right (or Up/Down) pick, Space presses, or tap a button.
+//   menu = { screen, choice }   screen: 'main', 'level' (sure?) or 'all' (sure?)
+//   picker = { choice }         which world to teleport to (the last button is "Stay here")
+let menu = null;
+let picker = null;
+
+const MENU_SCREENS = {
+  main:  { title: 'Menu', text: '', buttons: ['Keep playing', 'Restart this level', 'Start over'] },
+  level: { title: 'Restart this level?', text: "This level's stars, gems and puzzles will start again.", buttons: ['Yes, restart', 'No'] },
+  all:   { title: 'Start over?', text: 'Back to Level 1 with an empty Friend Book.', buttons: ['Yes, start over', 'No'] },
+};
+
+function openMenu() {
+  if (menu || talk || puzzle || finale || magic || sceneChange || picker) return;
+  menu = { screen: 'main', choice: 0 };
+  tapButtons = [];
+  Sounds.play('talkOpen');
+}
+
+// Moves the choice with any arrow key. Gives back true when Space picks something.
+function menuKeys(box, count) {
+  const before = box.choice;
+  if (justPressed.ArrowLeft || justPressed.ArrowUp) box.choice = Math.max(0, box.choice - 1);
+  if (justPressed.ArrowRight || justPressed.ArrowDown) box.choice = Math.min(count - 1, box.choice + 1);
+  if (box.choice !== before) Sounds.play('select');
+  return !!justPressed[' '];
+}
+
+function updateMenu() {
+  const screen = MENU_SCREENS[menu.screen];
+  if (justPressed.Escape) {
+    menu = null;
+    Sounds.play('talkClose');
+    return;
+  }
+  if (!menuKeys(menu, screen.buttons.length)) return;
+  Sounds.play('click');
+  const pick = screen.buttons[menu.choice];
+  if (pick === 'Keep playing' || pick === 'No') {
+    menu = menu.screen === 'main' ? null : { screen: 'main', choice: 0 };
+  } else if (pick === 'Restart this level') {
+    menu = { screen: 'level', choice: 1 }; // "No" is picked first, to be safe
+  } else if (pick === 'Start over') {
+    menu = { screen: 'all', choice: 1 };
+  } else if (pick === 'Yes, restart') {
+    menu = null;
+    restartLevel();
+  } else if (pick === 'Yes, start over') {
+    menu = null;
+    startOver();
+  }
+  tapButtons = [];
+}
+
+// Restart just this level: its stars, gems and cleared fog go away, and Dahlia starts again in the Meadow
+function restartLevel() {
+  stars = stars.filter(id => !id.startsWith(level + ':'));
+  gems = gems.filter(id => !id.startsWith(level + '-'));
+  unlocked = unlocked.filter(id => !id.startsWith(level + '-'));
+  saveList(STARS_KEY, stars);
+  saveList(GEMS_KEY, gems);
+  saveList(UNLOCKED_KEY, unlocked);
+  newStar = null;
+  finaleWait = 0;
+  loadLevel(level);
+  resetPlayer();
+  sparkles = [];
+  confetti = [];
+  sceneTitle = { name: `Level ${level}!`, t: 0 };
+  Sounds.play('transform');
+}
+
+function openPicker() {
+  picker = { choice: sceneIndex };
+  tapButtons = [];
+  Sounds.play('talkOpen');
+}
+
+function updatePicker() {
+  if (justPressed.Escape) {
+    picker = null;
+    return;
+  }
+  if (!menuKeys(picker, SCENES.length + 1)) return;
+  const choice = picker.choice;
+  picker = null;
+  tapButtons = [];
+  if (choice === SCENES.length || choice === sceneIndex) {
+    Sounds.play('talkClose'); // "Stay here" (or the world she's already in)
+    return;
+  }
+  // Poof! Off she goes to the start of that world
+  Sounds.play('teleportOut');
+  makeSparkles(player.x, player.y - player.move.height / 2, 16);
+  sceneChange = { t: 0, to: choice, done: false, teleport: true };
+}
+
+// One box near the top of the screen (clear of the iPad buttons) with a title, a line of words,
+// and buttons in rows (a new row when one gets too wide)
+function drawChoiceBox(title, text, labels, choice) {
+  ctx.fillStyle = 'rgba(58, 38, 38, 0.35)';
+  ctx.fillRect(0, 0, VIEW_W, VIEW_H);
+  ctx.font = `700 22px ${FONT}`;
+  const widths = labels.map(label => Math.max(110, ctx.measureText(label).width + 40));
+  const gap = 14, buttonH = 50, maxRow = 760;
+  // Sort the buttons into rows
+  const rows = [[]];
+  let rowWidth = 0;
+  labels.forEach((label, i) => {
+    if (rows[rows.length - 1].length && rowWidth + gap + widths[i] > maxRow) {
+      rows.push([]);
+      rowWidth = 0;
+    }
+    rowWidth += (rows[rows.length - 1].length ? gap : 0) + widths[i];
+    rows[rows.length - 1].push(i);
+  });
+  const rowWidths = rows.map(row => row.reduce((sum, i) => sum + widths[i], 0) + gap * (row.length - 1));
+  const w = Math.max(520, Math.max(...rowWidths) + 60);
+  const top = text ? 112 : 76;
+  const h = top + rows.length * (buttonH + gap) + 12;
+  const x = (VIEW_W - w) / 2, y = 24;
+
+  roundedBox(x, y, w, h, 28);
+  ctx.fillStyle = '#FFFDF7';
+  ctx.fill();
+  ctx.lineWidth = 5;
+  ctx.strokeStyle = '#3A2626';
+  ctx.stroke();
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.font = `700 32px ${FONT}`;
+  ctx.fillStyle = '#E6378F';
+  ctx.fillText(title, VIEW_W / 2, y + 42);
+  if (text) {
+    ctx.font = `400 22px ${FONT}`;
+    ctx.fillStyle = '#3A2626';
+    ctx.fillText(text, VIEW_W / 2, y + 84);
+  }
+  tapButtons = [];
+  rows.forEach((row, r) => {
+    let bx = (VIEW_W - rowWidths[r]) / 2;
+    const by = y + top + r * (buttonH + gap);
+    for (const i of row) {
+      const style = i === labels.length - 1 ? BUTTON_STYLES[2] : i === 0 ? BUTTON_STYLES[0] : BUTTON_STYLES[1];
+      drawPillButton(bx, by, widths[i], buttonH, labels[i], style, choice === i);
+      tapButtons[i] = { x: bx, y: by, w: widths[i], h: buttonH };
+      bx += widths[i] + gap;
+    }
+  });
+}
+
+function drawMenu() {
+  const screen = MENU_SCREENS[menu.screen];
+  drawChoiceBox(screen.title, screen.text, screen.buttons, menu.choice);
+}
+
+function drawPicker() {
+  const labels = [...SCENES.map(scene => scene.name), 'Stay here'];
+  drawChoiceBox('Teleport! Where to?', 'Dahlia can zip to any world. (Animals have to walk!)', labels, picker.choice);
 }
 
 // Moves Dahlia, the camera, the animals' idle animations and teleport timers
@@ -1907,6 +2176,7 @@ function draw() {
     drawPlayer();
   }
   if (magic) drawMagic();
+  drawHoldRing();
   drawSparkles();
 
   // Teleport puffs and countdowns (in front of Dahlia so you can always see them)
@@ -1922,16 +2192,62 @@ function draw() {
   ctx.restore();
 
   // These stay in the same place on the screen, so they're drawn after the camera
-  const boxOpen = talk || puzzle;
+  const boxOpen = talk || puzzle || menu || picker;
   if (talk) drawTalkBox();
   drawConfetti();
   if (!boxOpen) drawFriendBook();
   if (!boxOpen) drawCounters();
   if (!boxOpen) drawMuteButton();
+  if (!boxOpen) drawRoundButton(MENU_BUTTON, drawMenuIcon);
+  if (!boxOpen && canFullscreen) drawRoundButton(FULL_BUTTON, drawFullscreenIcon);
   if (sceneTitle && !boxOpen) drawSceneTitle();
   if (puzzle) drawPuzzle();
+  if (menu) drawMenu();
+  if (picker) drawPicker();
   if (finale) drawFinale();
   if (sceneChange) drawFade();
+}
+
+// A round paper button with a little picture drawn by drawIcon(x, y)
+function drawRoundButton(b, drawIcon) {
+  ctx.beginPath();
+  ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
+  ctx.fillStyle = '#FFFDF7';
+  ctx.fill();
+  ctx.lineWidth = 3;
+  ctx.strokeStyle = '#3A2626';
+  ctx.stroke();
+  drawIcon(b.x, b.y);
+}
+
+// Three lines: the menu
+function drawMenuIcon(x, y) {
+  ctx.strokeStyle = '#E6378F';
+  ctx.lineWidth = 4;
+  ctx.lineCap = 'round';
+  ctx.beginPath();
+  for (const dy of [-8, 0, 8]) {
+    ctx.moveTo(x - 11, y + dy);
+    ctx.lineTo(x + 11, y + dy);
+  }
+  ctx.stroke();
+  ctx.lineCap = 'butt';
+}
+
+// Four corners: full screen
+function drawFullscreenIcon(x, y) {
+  ctx.strokeStyle = '#E6378F';
+  ctx.lineWidth = 4;
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+  ctx.beginPath();
+  for (const [sx, sy] of [[-1, -1], [1, -1], [1, 1], [-1, 1]]) {
+    ctx.moveTo(x + sx * 11, y + sy * 4);
+    ctx.lineTo(x + sx * 11, y + sy * 11);
+    ctx.lineTo(x + sx * 4, y + sy * 11);
+  }
+  ctx.stroke();
+  ctx.lineCap = 'butt';
 }
 
 // Round sound button in the top right corner
